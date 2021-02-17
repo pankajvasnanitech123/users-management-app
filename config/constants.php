@@ -2,6 +2,6 @@
     return [
         'user_types' => [
             'admin' => 1,
-            'non-admin' => 2
+            'non_admin' => 2
         ]
     ];
