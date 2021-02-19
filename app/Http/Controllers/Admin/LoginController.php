@@ -8,10 +8,16 @@ use View, Auth;
 
 class LoginController extends Controller
 {
+    /**
+     * Function to show login form
+     */
     public function showLoginForm(Request $request) {
         return View::make('login');
     }
 
+    /**
+     * Function to validate login details
+     */
     public function validateLoginForm(Request $request) {
         $credentials = $request->only('email', 'password');
 

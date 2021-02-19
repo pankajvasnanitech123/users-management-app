@@ -10,6 +10,9 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    /**
+     * Function to create a new user
+     */
     public function create(UserCreateRequest $request) {
         // Save user
         $user = User::factory()->create();
@@ -28,6 +31,9 @@ class UserController extends Controller
         return response()->json(['success' => true, 'data' => $data, 'message' => ''], 201);
     }
 
+    /**
+     * Function to show user details
+     */
     public function show($id) {
         // Show user details
         $data = User::with('user_information')->where('id', $id)->first();
@@ -39,6 +45,9 @@ class UserController extends Controller
         return response()->json(['success' => true, 'data' => $data, 'message' => ''], 200);
     }
 
+    /**
+     * Function to update user details
+     */
     public function update($id) {
         // Get user information
         $data = UserInformation::where('id', $id)->first();
@@ -55,6 +64,9 @@ class UserController extends Controller
         return response()->json(['success' => true, 'data' => $data, 'message' => ''], 200);
     }
 
+    /**
+     * Function to delete user details
+     */
     public function delete($id) {
         // Get user information
         $data = UserInformation::where('id', $id)->first();

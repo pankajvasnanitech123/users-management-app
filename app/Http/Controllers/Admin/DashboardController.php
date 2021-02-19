@@ -9,6 +9,9 @@ use App\Models\User;
 
 class DashboardController extends Controller
 {
+    /**
+     * Function to show users listing
+     */
     public function index(Request $request) {
         $users = User::with('user_information')->paginate(14);
 

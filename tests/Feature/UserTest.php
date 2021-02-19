@@ -11,9 +11,7 @@ use App\Models\UserInformation;
 class UserTest extends TestCase
 {
     /**
-     * A basic feature test example.
-     *
-     * @return void
+     * Function to test create new user
      */
     public function test_can_create_user() {
         $user = User::factory()->make();
@@ -34,6 +32,9 @@ class UserTest extends TestCase
                     ]);
     }
 
+    /**
+     * Function to test user cannot enter empty status
+     */
     public function test_cannot_enter_empty_status() {
         $user = User::factory()->make();
 
@@ -46,6 +47,9 @@ class UserTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Function to test user cannot enter empty position
+     */
     public function test_cannot_enter_empty_position() {
         $user = User::factory()->make();
 
@@ -61,6 +65,9 @@ class UserTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Function to test show user details
+     */
     public function test_show_user_details() {
         $user = User::factory()->create();
 
@@ -73,6 +80,9 @@ class UserTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * Function to test update user details
+     */
     public function test_can_update_user() {
         $user = User::factory()->create();
 
@@ -95,6 +105,9 @@ class UserTest extends TestCase
                     ]);
     }
 
+    /**
+     * Function to test delete user details
+     */
     public function test_can_delete_user() {
         $user = User::factory()->create();
 
