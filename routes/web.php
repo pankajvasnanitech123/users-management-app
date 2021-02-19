@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::group(['namespace' => 'App\Http\Controllers\Admin'], function() {
+    Route::get('login', 'LoginController@showLoginForm')->name('login');
+    Route::post('login-validate', 'LoginController@validateLoginForm')->name('login_validate');
 
-Route::get('login', 'LoginController@showLoginForm')->name('login');
-Route::get('login-validate', 'LoginController@validateLoginForm')->name('login_validate');
+    Route::group(['middleware' => 'auth.admin'], function() {
+        Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+        Route::get('logout', 'LoginController@logout')->name('logout');
+    });
+});
